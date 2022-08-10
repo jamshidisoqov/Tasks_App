@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="uz.gita.task_app.ui.main.screens.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_addTodoFragment"
+            app:destination="@id/addTodoFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_updateTodoFragment"
+            app:destination="@id/updateTodoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addTodoFragment"
+        android:name="uz.gita.task_app.ui.main.screens.add.AddTodoFragment"
+        android:label="fragment_add_todo"
+        tools:layout="@layout/fragment_add_todo" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="uz.gita.task_app.ui.main.screens.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/updateTodoFragment"
+        android:name="uz.gita.task_app.ui.main.screens.update.UpdateTodoFragment"
+        android:label="fragment_update_todo"
+        tools:layout="@layout/fragment_update_todo" />
+    <fragment
+        android:id="@+id/introFragment"
+        android:name="uz.gita.task_app.ui.intro.pages.intro.IntroFragment"
+        android:label="fragment_intro"
+        tools:layout="@layout/fragment_intro" >
+        <action
+            android:id="@+id/action_introFragment_to_toSignUpFragment"
+            app:destination="@id/toSignUpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="uz.gita.task_app.ui.intro.pages.sign_up.SignUpFragment"
+        android:label="fragment_sign_up"
+        tools:layout="@layout/fragment_sign_up" />
+    <fragment
+        android:id="@+id/toSignUpFragment"
+        android:name="uz.gita.todo_list_app.ui.intro.pages.intro.ToSignUpFragment"
+        android:label="fragment_to_sign_up"
+        tools:layout="@layout/fragment_to_sign_up" >
+        <action
+            android:id="@+id/action_toSignUpFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+    </fragment>
+</navigation>

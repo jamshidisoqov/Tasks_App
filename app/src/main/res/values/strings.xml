@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">ToDoListApp</string>
+    <string name="back">Back</string>
+    <string name="next">Next</string>
+    <string name="welcome_to_uptodo">Welcome to UpTodo</string>
+    <string name="create_new_account">Please login to your account or create new account to continue</string>
+    <string name="create_account">Create Account</string>
+    <string name="enter_your_username">Enter your Username</string>
+    <string name="password">Password</string>
+    <string name="password_confirm">Confirm password</string>
+    <string name="register">Register</string>
+    <string name="home">Home</string>
+    <string name="profile">Profile</string>
+    <string name="task_date">Task Date</string>
+    <string name="task_time">Task Time</string>
+    <string name="task_category">Task Category</string>
+    <string name="task_priority">Task Priority</string>
+    <string name="add_task">Add Task</string>
+    <string name="do_math_homework">Do math homework</string>
+    <string name="description">Description</string>
+    <string name="choose_category">Choose category</string>
+    <string name="add_task_priority">Add Task Priority</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string-array name="status_tasks">
+        <item>Tasks</item>
+        <item>Completed</item>
+        <item>Incomplete</item>
+    </string-array>
+</resources>
