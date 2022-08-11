@@ -14,9 +14,31 @@ import uz.gita.task_app.utils.extensions.inflate
 // Created by Jamshid Isoqov an 8/10/2022
 class TaskAdapter : ListAdapter<TaskEntity, TaskAdapter.ViewHolder>(TaskItemCallback()) {
 
+    private var checkListener: ((TaskEntity) -> Unit)? = null
+    private var itemClickListener: ((TaskEntity) -> Unit)? = null
+
+    fun setCheckedListener(block: (TaskEntity) -> Unit) {
+        checkListener = block
+    }
+
+    fun setItemClickListener(block: (TaskEntity) -> Unit) {
+        itemClickListener = block
+    }
 
     inner class ViewHolder(private val binding: ListItemTodoBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
+        init {
+            binding.apply {
+                rbTodo.setOnCheckedChangeListener { _, _ ->
+                    checkListener?.invoke(getItem(adapterPosition))
+                }
+                root.setOnClickListener {
+                    itemClickListener?.invoke(getItem(adapterPosition))
+                }
+            }
+
+        }
 
         fun onBind() {
             val data = getItem(adapterPosition)
@@ -32,6 +54,7 @@ class TaskAdapter : ListAdapter<TaskEntity, TaskAdapter.ViewHolder>(TaskItemCall
                         category.categoryDrawable
                     )
                 )
+                rbTodo.isChecked = data.isWorking == 1
             }
         }
     }

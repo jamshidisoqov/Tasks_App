@@ -2,6 +2,7 @@ package uz.gita.task_app.ui.main.screens.home
 
 import android.os.Bundle
 import android.view.View
+import android.widget.AdapterView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -13,6 +14,7 @@ import uz.gita.task_app.domain.presenter.main.HomeViewModel
 import uz.gita.task_app.domain.presenter.main.impl.HomeViewModelImpl
 import uz.gita.task_app.ui.main.adapters.TaskAdapter
 import uz.gita.task_app.ui.main.dialogs.ChooseCalendarDialog
+import uz.gita.task_app.ui.main.dialogs.TaskEditStatusDialog
 import uz.gita.task_app.utils.extensions.getCurrentDate
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
@@ -25,6 +27,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         super.onCreate(savedInstanceState)
         viewModel.openAddTaskLiveData.observe(this, addTaskObserver)
         viewModel.openCalenderLiveData.observe(this, openDateObserver)
+        viewModel.openEditDialog.observe(this, editDialogListener)
+        viewModel.openUpdateTaskLiveData.observe(this, updateTaskObserver)
     }
 
     private val adapter: TaskAdapter by lazy {
@@ -45,12 +49,20 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             tvDate.setOnClickListener {
                 viewModel.clickOpenCalendar()
             }
+            spinnerStatus.onItemSelectedListener = itemSelectedListener
         }
         viewModel.getTasks(viewModel.date.value!!, 0)
 
 
         viewModel.allTasks.observe(viewLifecycleOwner, tasksObserver)
         viewModel.date.observe(viewLifecycleOwner, dateObserver)
+
+        adapter.setCheckedListener {
+            viewModel.editClicked(it)
+        }
+        adapter.setItemClickListener {
+            viewModel.openUpdate(it)
+        }
     }
 
     private val addTaskObserver = Observer<Unit> {
@@ -73,5 +85,32 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
     private val dateObserver = Observer<String> {
         binding.tvDate.text = it
+
+    }
+
+    private var itemSelectedListener = object : AdapterView.OnItemSelectedListener {
+
+        override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+            viewModel.setPosition(position)
+        }
+
+        override fun onNothingSelected(parent: AdapterView<*>?) {
+
+        }
+
+    }
+    private var editDialogListener = Observer<TaskEntity> {
+        val dialog = TaskEditStatusDialog(requireContext(), it.isWorking == 1)
+        dialog.show()
+        dialog.setEditListener { b ->
+            viewModel.updateTask(it.copy(isWorking = 1 - it.isWorking))
+        }
+    }
+    private var updateTaskObserver = Observer<TaskEntity> {
+        findNavController().navigate(
+            HomeFragmentDirections.actionHomeFragmentToUpdateTodoFragment(
+                it
+            )
+        )
     }
 }

@@ -22,9 +22,14 @@
     <string name="add_task_priority">Add Task Priority</string>
     <string name="cancel">Cancel</string>
     <string name="save">Save</string>
+    <string name="edit_task">Edit task</string>
+    <string name="edit">Edit</string>
     <string-array name="status_tasks">
         <item>Tasks</item>
         <item>Completed</item>
         <item>Incomplete</item>
     </string-array>
+    <string name="completed_task_message">Did you actually complete the task?</string>
+    <string name="in_completed_task_message">Are you sure you want to restart the task?</string>
+
 </resources>

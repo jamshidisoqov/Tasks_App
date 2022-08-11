@@ -10,7 +10,11 @@ interface HomeViewModel {
 
     val openProfileLiveData: LiveData<Unit>
 
+    val openUpdateTaskLiveData:LiveData<TaskEntity>
+
     val openAddTaskLiveData: LiveData<Unit>
+
+    val openEditDialog:LiveData<TaskEntity>
 
     val openCalenderLiveData: LiveData<Unit>
 
@@ -26,8 +30,14 @@ interface HomeViewModel {
 
     fun openCalendar()
 
+    fun editClicked(taskData: TaskEntity)
+
     fun addTaskClick()
 
     fun setData(date: String)
+
+    fun setPosition(pod:Int)
+
+    fun openUpdate(taskEntity: TaskEntity)
 
 }

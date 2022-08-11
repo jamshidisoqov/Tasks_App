@@ -7,6 +7,7 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
 import uz.gita.task_app.databinding.DialogChooseCalendarBinding
+import uz.gita.task_app.utils.extensions.getCurrentDate
 import java.time.Month
 
 // Created by Jamshid Isoqov an 8/9/2022
@@ -33,11 +34,11 @@ class ChooseCalendarDialog(ctx: Context) : Dialog(ctx) {
         binding.btnSave.setOnClickListener {
             val builder = StringBuilder()
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                builder.append("${Month.of(month+1)} $day,$year")
+                builder.append("${Month.of(month + 1)} $day,$year")
             } else {
-                builder.append("${Month.values()[month+1]} $day,$year")
+                builder.append("${Month.values()[month + 1]} $day,$year")
             }
-            dateListener?.invoke(builder.toString())
+            dateListener?.invoke(if (day > 0) builder.toString() else getCurrentDate())
             dismiss()
         }
     }

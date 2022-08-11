@@ -65,6 +65,9 @@ class AddTodoFragment : Fragment(R.layout.fragment_add_todo) {
             btnAddTask.setOnClickListener {
                 viewModel.addClicked()
             }
+            imgClose.setOnClickListener {
+                viewModel.closedClick()
+            }
         }
 
     }

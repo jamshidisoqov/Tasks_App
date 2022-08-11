@@ -19,8 +19,14 @@ class HomeViewModelImpl : ViewModel(), HomeViewModel {
     private var _openProfileLiveData: MutableLiveData<Unit> = MutableLiveData()
     override val openProfileLiveData: LiveData<Unit> = _openProfileLiveData
 
+    private var _openUpdateTaskLiveData: MutableLiveData<TaskEntity> = MutableLiveData()
+    override val openUpdateTaskLiveData: LiveData<TaskEntity> = _openUpdateTaskLiveData
+
     private var _openAddTaskLiveData: MediatorLiveData<Unit> = MediatorLiveData()
     override val openAddTaskLiveData: LiveData<Unit> = _openAddTaskLiveData
+
+    private var _openEditDialog: MutableLiveData<TaskEntity> = MutableLiveData()
+    override val openEditDialog: LiveData<TaskEntity> = _openEditDialog
 
     private var _openCalenderLiveData: MutableLiveData<Unit> = MutableLiveData()
     override val openCalenderLiveData: LiveData<Unit> = _openCalenderLiveData
@@ -56,13 +62,26 @@ class HomeViewModelImpl : ViewModel(), HomeViewModel {
         _openCalenderLiveData.postValue(Unit)
     }
 
+    override fun editClicked(taskData: TaskEntity) {
+        _openEditDialog.postValue(taskData)
+    }
+
     override fun addTaskClick() {
         _openAddTaskLiveData.postValue(Unit)
     }
 
     override fun setData(date: String) {
         _date.postValue(date)
-        getTasks(date,_spinnerPosition.value!!)
+        getTasks(date, _spinnerPosition.value!!)
+    }
+
+    override fun setPosition(pod: Int) {
+        _spinnerPosition.postValue(pod)
+        getTasks(_date.value!!, pod)
+    }
+
+    override fun openUpdate(taskEntity: TaskEntity) {
+       _openUpdateTaskLiveData.postValue(taskEntity)
     }
 
 

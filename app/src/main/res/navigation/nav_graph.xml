@@ -34,7 +34,11 @@
         android:id="@+id/updateTodoFragment"
         android:name="uz.gita.task_app.ui.main.screens.update.UpdateTodoFragment"
         android:label="fragment_update_todo"
-        tools:layout="@layout/fragment_update_todo" />
+        tools:layout="@layout/fragment_update_todo" >
+        <argument
+            android:name="taskEntity"
+            app:argType="uz.gita.task_app.data.room.entity.TaskEntity" />
+    </fragment>
     <fragment
         android:id="@+id/introFragment"
         android:name="uz.gita.task_app.ui.intro.pages.intro.IntroFragment"
