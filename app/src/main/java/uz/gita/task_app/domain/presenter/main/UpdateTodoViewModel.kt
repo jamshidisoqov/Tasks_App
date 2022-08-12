@@ -53,7 +53,7 @@ interface UpdateTodoViewModel {
 
     fun addClicked()
 
-    fun updateTask()
+    fun updateTask(id:Int)
 
     fun setHeader(title: String)
 

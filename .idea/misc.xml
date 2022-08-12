@@ -3,7 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Jamshid/AndroidStudioProjects/TaskApp/app/src/main/res/drawable-v24/bg_bottom_sheet_dialog.xml" value="0.1235" />
+        <entry key="..\:/Users/Jamshid/AndroidStudioProjects/TaskApp/app/src/main/res/drawable/bg_bottom_sheet_dialog.xml" value="0.1235" />
         <entry key="..\:/Users/Jamshid/AndroidStudioProjects/TaskApp/app/src/main/res/drawable/bg_close_btn.xml" value="0.1495" />
+        <entry key="..\:/Users/Jamshid/AndroidStudioProjects/TaskApp/app/src/main/res/drawable/bg_create_account_btn.xml" value="0.1235" />
+        <entry key="..\:/Users/Jamshid/AndroidStudioProjects/TaskApp/app/src/main/res/drawable/bg_dialog_shape.xml" value="0.1235" />
+        <entry key="..\:/Users/Jamshid/AndroidStudioProjects/TaskApp/app/src/main/res/drawable/bg_intro_btn_next.xml" value="0.1235" />
+        <entry key="..\:/Users/Jamshid/AndroidStudioProjects/TaskApp/app/src/main/res/drawable/bg_outline_box_todo.xml" value="0.1235" />
+        <entry key="..\:/Users/Jamshid/AndroidStudioProjects/TaskApp/app/src/main/res/drawable/bg_sort_btn.xml" value="0.1235" />
+        <entry key="..\:/Users/Jamshid/AndroidStudioProjects/TaskApp/app/src/main/res/drawable/bg_spinner_popup.xml" value="0.1235" />
+        <entry key="..\:/Users/Jamshid/AndroidStudioProjects/TaskApp/app/src/main/res/drawable/bg_text_add_todo.xml" value="0.1235" />
         <entry key="..\:/Users/Jamshid/AndroidStudioProjects/TaskApp/app/src/main/res/drawable/ic_add.xml" value="0.1495" />
         <entry key="..\:/Users/Jamshid/AndroidStudioProjects/TaskApp/app/src/main/res/drawable/ic_back.xml" value="0.1495" />
         <entry key="..\:/Users/Jamshid/AndroidStudioProjects/TaskApp/app/src/main/res/drawable/ic_bread.xml" value="0.1495" />
@@ -19,6 +28,8 @@
         <entry key="..\:/Users/Jamshid/AndroidStudioProjects/TaskApp/app/src/main/res/drawable/ic_megaphone.xml" value="0.1495" />
         <entry key="..\:/Users/Jamshid/AndroidStudioProjects/TaskApp/app/src/main/res/drawable/ic_mortarboard.xml" value="0.1495" />
         <entry key="..\:/Users/Jamshid/AndroidStudioProjects/TaskApp/app/src/main/res/drawable/ic_music.xml" value="0.1495" />
+        <entry key="..\:/Users/Jamshid/AndroidStudioProjects/TaskApp/app/src/main/res/drawable/ic_next.xml" value="0.1235" />
+        <entry key="..\:/Users/Jamshid/AndroidStudioProjects/TaskApp/app/src/main/res/drawable/ic_share.xml" value="0.1235" />
         <entry key="..\:/Users/Jamshid/AndroidStudioProjects/TaskApp/app/src/main/res/drawable/ic_sort.xml" value="0.1495" />
         <entry key="..\:/Users/Jamshid/AndroidStudioProjects/TaskApp/app/src/main/res/drawable/ic_sport.xml" value="0.1495" />
         <entry key="..\:/Users/Jamshid/AndroidStudioProjects/TaskApp/app/src/main/res/drawable/ic_tag.xml" value="0.1495" />
@@ -30,16 +41,20 @@
         <entry key="..\:/Users/Jamshid/AndroidStudioProjects/TaskApp/app/src/main/res/layout/activity_main.xml" value="0.23333333333333334" />
         <entry key="..\:/Users/Jamshid/AndroidStudioProjects/TaskApp/app/src/main/res/layout/dialog_add_completed_task.xml" value="0.24739583333333334" />
         <entry key="..\:/Users/Jamshid/AndroidStudioProjects/TaskApp/app/src/main/res/layout/dialog_add_header.xml" value="0.2484375" />
+        <entry key="..\:/Users/Jamshid/AndroidStudioProjects/TaskApp/app/src/main/res/layout/dialog_change_name.xml" value="0.18611111111111112" />
         <entry key="..\:/Users/Jamshid/AndroidStudioProjects/TaskApp/app/src/main/res/layout/dialog_choose_calendar.xml" value="0.2484375" />
         <entry key="..\:/Users/Jamshid/AndroidStudioProjects/TaskApp/app/src/main/res/layout/dialog_choose_category.xml" value="0.2484375" />
         <entry key="..\:/Users/Jamshid/AndroidStudioProjects/TaskApp/app/src/main/res/layout/dialog_choose_priority.xml" value="0.2484375" />
         <entry key="..\:/Users/Jamshid/AndroidStudioProjects/TaskApp/app/src/main/res/layout/dialog_choose_time.xml" value="0.2484375" />
         <entry key="..\:/Users/Jamshid/AndroidStudioProjects/TaskApp/app/src/main/res/layout/dialog_edit_status_task.xml" value="0.2484375" />
+        <entry key="..\:/Users/Jamshid/AndroidStudioProjects/TaskApp/app/src/main/res/layout/dialog_menu_bottom.xml" value="0.186328125" />
+        <entry key="..\:/Users/Jamshid/AndroidStudioProjects/TaskApp/app/src/main/res/layout/fragment_about.xml" value="0.2484375" />
         <entry key="..\:/Users/Jamshid/AndroidStudioProjects/TaskApp/app/src/main/res/layout/fragment_add_todo.xml" value="0.2484375" />
         <entry key="..\:/Users/Jamshid/AndroidStudioProjects/TaskApp/app/src/main/res/layout/fragment_home.xml" value="0.23425925925925925" />
-        <entry key="..\:/Users/Jamshid/AndroidStudioProjects/TaskApp/app/src/main/res/layout/fragment_intro.xml" value="0.2484375" />
-        <entry key="..\:/Users/Jamshid/AndroidStudioProjects/TaskApp/app/src/main/res/layout/fragment_profile.xml" value="0.2484375" />
+        <entry key="..\:/Users/Jamshid/AndroidStudioProjects/TaskApp/app/src/main/res/layout/fragment_intro.xml" value="0.18611111111111112" />
+        <entry key="..\:/Users/Jamshid/AndroidStudioProjects/TaskApp/app/src/main/res/layout/fragment_profile.xml" value="0.17355371900826447" />
         <entry key="..\:/Users/Jamshid/AndroidStudioProjects/TaskApp/app/src/main/res/layout/fragment_sign_up.xml" value="0.2484375" />
+        <entry key="..\:/Users/Jamshid/AndroidStudioProjects/TaskApp/app/src/main/res/layout/fragment_splash.xml" value="0.2484375" />
         <entry key="..\:/Users/Jamshid/AndroidStudioProjects/TaskApp/app/src/main/res/layout/fragment_to_sign_up.xml" value="0.2484375" />
         <entry key="..\:/Users/Jamshid/AndroidStudioProjects/TaskApp/app/src/main/res/layout/fragment_update_todo.xml" value="0.2484375" />
         <entry key="..\:/Users/Jamshid/AndroidStudioProjects/TaskApp/app/src/main/res/layout/list_item_category.xml" value="0.2484375" />

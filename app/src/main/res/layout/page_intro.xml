@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".ui.intro.IntroFragment">
+
+    <ImageView
+        android:id="@+id/header_image_intro"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/ic_intro3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.1"
+        app:layout_constraintWidth_percent="0.65" />
+
+
+    <TextView
+        android:id="@+id/tv_intro_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato_bold"
+        android:textSize="32sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header_image_intro"
+        app:layout_constraintVertical_bias="0.27"
+        tools:text="Manage your tasks" />
+
+    <TextView
+        android:id="@+id/tv_intro_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/lato"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@id/tv_intro_title"
+        app:layout_constraintStart_toStartOf="@id/tv_intro_title"
+        app:layout_constraintTop_toBottomOf="@id/tv_intro_title"
+        app:layout_constraintWidth_percent="0.7"
+        tools:text="You can easily manage all of your daily tasks in DoMe for free" />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

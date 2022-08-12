@@ -14,6 +14,7 @@ import uz.gita.task_app.databinding.FragmentHomeBinding
 import uz.gita.task_app.domain.presenter.main.HomeViewModel
 import uz.gita.task_app.domain.presenter.main.impl.HomeViewModelImpl
 import uz.gita.task_app.ui.main.adapters.TaskAdapter
+import uz.gita.task_app.ui.main.dialogs.BottomMenuDialog
 import uz.gita.task_app.ui.main.dialogs.ChooseCalendarDialog
 import uz.gita.task_app.ui.main.dialogs.TaskEditStatusDialog
 import uz.gita.task_app.utils.extensions.getCurrentDate
@@ -30,6 +31,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         viewModel.openCalenderLiveData.observe(this, openDateObserver)
         viewModel.openEditDialog.observe(this, editDialogListener)
         viewModel.openUpdateTaskLiveData.observe(this, updateTaskObserver)
+        viewModel.openProfileLiveData.observe(this, openProfileObserver)
+        viewModel.openBottomMenu.observe(this, openBottomMenuObserver)
     }
 
     private val adapter: TaskAdapter by lazy {
@@ -39,11 +42,15 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         binding = FragmentHomeBinding.bind(view)
+
         binding.apply {
             bottomNavView.background = null
             bottomNavView.menu.getItem(1).isEnabled = false
             fabAdd.setOnClickListener {
                 viewModel.addTaskClick()
+            }
+            imgSort.setOnClickListener {
+                viewModel.menuClick()
             }
             listTodo.adapter = adapter
             tvDate.text = getCurrentDate()
@@ -52,6 +59,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             }
             spinnerStatus.onItemSelectedListener = itemSelectedListener
         }
+
         viewModel.getTasks(viewModel.date.value!!, 0)
 
 
@@ -67,6 +75,14 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         adapter.setItemLongClickListener {
             Toast.makeText(requireContext(), it.description, Toast.LENGTH_SHORT).show()
         }
+
+        binding.bottomNavView.setOnItemSelectedListener {
+            if (it.itemId == R.id.menu_profile) {
+                viewModel.openProfile()
+            }
+            true
+        }
+        binding.bottomNavView.menu.findItem(R.id.menu_home).isChecked = true;
     }
 
     private val addTaskObserver = Observer<Unit> {
@@ -107,7 +123,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         val dialog = TaskEditStatusDialog(requireContext(), it.isWorking == 1)
         dialog.show()
         dialog.setEditListener { b ->
-            viewModel.updateTask(it.copy(isWorking = 1 - it.isWorking))
+            viewModel.updateTask(it.copy(isWorking = if (b) 1 - it.isWorking else it.isWorking))
         }
     }
     private var updateTaskObserver = Observer<TaskEntity> {
@@ -116,5 +132,14 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 it
             )
         )
+    }
+
+    private var openProfileObserver = Observer<Unit> {
+        findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToProfileFragment())
+    }
+
+    private val openBottomMenuObserver = Observer<Unit> {
+        val dialog = BottomMenuDialog()
+        dialog.show(childFragmentManager, "menu")
     }
 }

@@ -36,6 +36,7 @@ class TaskAdapter : ListAdapter<TaskEntity, TaskAdapter.ViewHolder>(TaskItemCall
         init {
             binding.apply {
                 rbTodo.setOnClickListener {
+                    rbTodo.isChecked = !rbTodo.isChecked
                     checkListener?.invoke(getItem(adapterPosition))
                 }
                 root.setOnClickListener {

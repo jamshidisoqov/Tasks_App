@@ -65,7 +65,7 @@ class UpdateTodoFragment : Fragment(R.layout.fragment_update_todo) {
                 viewModel.openPriorityDialog()
             }
             btnEditTask.setOnClickListener {
-                viewModel.updateTask()
+                viewModel.addClicked()
             }
             imgClose.setOnClickListener {
                 viewModel.closedClick()
@@ -78,7 +78,7 @@ class UpdateTodoFragment : Fragment(R.layout.fragment_update_todo) {
     }
 
     private val saveObserver = Observer<Unit> {
-        viewModel.updateTask()
+        viewModel.updateTask(args.taskEntity.id)
     }
 
     private val messageListener = Observer<String> {

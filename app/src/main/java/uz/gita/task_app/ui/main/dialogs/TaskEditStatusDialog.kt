@@ -13,9 +13,9 @@ class TaskEditStatusDialog(ctx: Context, private val isWorking: Boolean) : Dialo
 
     private lateinit var binding: DialogEditStatusTaskBinding
 
-    private var editListener:((Boolean)->Unit)? =null
+    private var editListener: ((Boolean) -> Unit)? = null
 
-    fun setEditListener(block:(Boolean)->Unit){
+    fun setEditListener(block: (Boolean) -> Unit) {
         editListener = block
     }
 
@@ -23,15 +23,16 @@ class TaskEditStatusDialog(ctx: Context, private val isWorking: Boolean) : Dialo
         binding = DialogEditStatusTaskBinding.inflate(layoutInflater)
         window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         setContentView(binding.root)
-
+        setCancelable(false)
         binding.tvMessage.text =
             if (isWorking) context.resources?.getString(R.string.completed_task_message) else
                 context.resources?.getString(R.string.in_completed_task_message)
         binding.btnEdit.setOnClickListener {
-            editListener?.invoke(!isWorking)
+            editListener?.invoke(true)
             dismiss()
         }
         binding.btnCancel.setOnClickListener {
+            editListener?.invoke(false)
             dismiss()
         }
 

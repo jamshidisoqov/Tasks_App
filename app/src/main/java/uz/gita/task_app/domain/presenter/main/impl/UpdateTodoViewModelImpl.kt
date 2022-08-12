@@ -91,7 +91,7 @@ class UpdateTodoViewModelImpl : ViewModel(), UpdateTodoViewModel {
         _addTaskLiveData.postValue(Unit)
     }
 
-    override fun updateTask() {
+    override fun updateTask(id: Int) {
         val title = titleLiveData.value!!
         val description = descriptionLiveData.value!!
         val date = dateLiveData.value!!
@@ -100,9 +100,10 @@ class UpdateTodoViewModelImpl : ViewModel(), UpdateTodoViewModel {
         val priority = taskPriorityLiveData.value!!
         repository.insertTask(
             TaskEntity(
-                0, title, description, date, time, 0, priority, category.id
+                id, title, description, date, time, 0, priority, category.id
             )
         )
+        _messageLiveData.postValue("Successfully Updated")
     }
 
     override fun setHeader(title: String) {

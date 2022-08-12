@@ -1,5 +1,11 @@
 package uz.gita.task_app.utils
 
+import android.app.Activity
+import android.content.ActivityNotFoundException
+import android.content.Intent
+import android.net.Uri
+import androidx.core.content.ContextCompat.startActivity
+import uz.gita.task_app.MainActivity
 import uz.gita.task_app.data.models.CategoryEntity
 
 // Created by Jamshid Isoqov an 8/10/2022
@@ -16,4 +22,22 @@ object Constants {
         CategoryEntity(9,"Movie","ic_video"),
         CategoryEntity(10,"Home","ic_home"),
     )
+
+    fun goToPlayMarket(activity: MainActivity){
+        try {
+            activity.startActivity(
+                Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse("market://details?id=uz.gita.task_app")
+                )
+            )
+        } catch (e: ActivityNotFoundException) {
+            activity.startActivity(
+                Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse("https://play.google.com/store/apps/details?id=uz.gita.task_app")
+                )
+            )
+        }
+    }
 }

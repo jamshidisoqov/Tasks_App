@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ToDoListApp</string>
+    <string name="app_name">UpTodo</string>
     <string name="back">Back</string>
     <string name="next">Next</string>
     <string name="welcome_to_uptodo">Welcome to UpTodo</string>
@@ -31,5 +31,28 @@
     </string-array>
     <string name="completed_task_message">Did you actually complete the task?</string>
     <string name="in_completed_task_message">Are you sure you want to restart the task?</string>
+    <string name="account">Account</string>
+    <string name="change_account_name">Change account name</string>
+    <string name="change_image">Change account Image</string>
+    <string name="about_us">About US</string>
+    <string name="help"><![CDATA[Help & Feedback]]></string>
+    <string name="support_us">Support US</string>
+    <string name="name">Name</string>
+    <string name="app_version">Version:1.1</string>
+    <string name="developer">Developer from Isoqov Jamshid</string>
+    <string name="contact_us"><![CDATA[Contact & Feedback]]></string>
+    <string name="share">Share App</string>
+
+    <string-array name="intro_titles">
+        <item>Manage your tasks</item>
+        <item>Create daily routine</item>
+        <item>Organized your tasks</item>
+    </string-array>
+
+    <string-array name="intro_subtitles">
+        <item>You can easily manage all of your daily tasks in DoMe for free</item>
+        <item>In Uptodo  you can create your personalized routine to stay productive</item>
+        <item>You can organize your daily tasks by adding your tasks into separate categories</item>
+    </string-array>
 
 </resources>

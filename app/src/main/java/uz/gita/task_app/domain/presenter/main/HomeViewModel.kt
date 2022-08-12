@@ -20,11 +20,15 @@ interface HomeViewModel {
 
     val spinnerPosition:LiveData<Int>
 
+    val openBottomMenu:LiveData<Unit>
+
     val date: LiveData<String>
 
     fun clickOpenCalendar()
 
     fun getTasks(date: String, pos: Int)
+
+    fun openProfile()
 
     fun updateTask(taskData: TaskEntity)
 
@@ -39,5 +43,7 @@ interface HomeViewModel {
     fun setPosition(pod:Int)
 
     fun openUpdate(taskEntity: TaskEntity)
+
+    fun menuClick()
 
 }

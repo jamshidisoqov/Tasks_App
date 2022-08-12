@@ -4,7 +4,7 @@
     android:layout_width="110dp"
     android:layout_height="wrap_content"
     android:background="@drawable/bg_close_btn"
-    android:paddingHorizontal="12dp"
+    android:paddingHorizontal="16dp"
     android:paddingVertical="8dp"
     android:textSize="14sp"
     tools:text="Completed" />

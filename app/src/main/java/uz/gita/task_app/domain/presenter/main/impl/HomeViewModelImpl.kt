@@ -34,6 +34,8 @@ class HomeViewModelImpl : ViewModel(), HomeViewModel {
     private var _spinnerPosition: MutableLiveData<Int> = MutableLiveData(0)
     override val spinnerPosition: LiveData<Int> = _spinnerPosition
 
+    override val openBottomMenu: MutableLiveData<Unit> = MutableLiveData()
+
     private var _date: MutableLiveData<String> = MutableLiveData(getCurrentDate())
     override val date: LiveData<String> = _date
 
@@ -52,6 +54,10 @@ class HomeViewModelImpl : ViewModel(), HomeViewModel {
         ) {
             _allTasks.postValue(it)
         }
+    }
+
+    override fun openProfile() {
+        _openProfileLiveData.postValue(Unit)
     }
 
     override fun updateTask(taskData: TaskEntity) {
@@ -82,6 +88,10 @@ class HomeViewModelImpl : ViewModel(), HomeViewModel {
 
     override fun openUpdate(taskEntity: TaskEntity) {
        _openUpdateTaskLiveData.postValue(taskEntity)
+    }
+
+    override fun menuClick() {
+        openBottomMenu.postValue(Unit)
     }
 
 
