@@ -8,10 +8,11 @@ import android.os.Build
 import android.os.Bundle
 import uz.gita.task_app.databinding.DialogChooseCalendarBinding
 import uz.gita.task_app.utils.extensions.getCurrentDate
+import uz.gita.task_app.utils.extensions.toDate
 import java.time.Month
 
 // Created by Jamshid Isoqov an 8/9/2022
-class ChooseCalendarDialog(ctx: Context) : Dialog(ctx) {
+class ChooseCalendarDialog(ctx: Context, private var date: String) : Dialog(ctx) {
     private var dateListener: ((String) -> Unit)? = null
     private lateinit var binding: DialogChooseCalendarBinding
     private var day = 0
@@ -21,7 +22,8 @@ class ChooseCalendarDialog(ctx: Context) : Dialog(ctx) {
         binding = DialogChooseCalendarBinding.inflate(layoutInflater)
         setContentView(binding.root)
         window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        binding.calendarView.date = System.currentTimeMillis()
+        binding.calendarView.date = date.toDate().time
+
         binding.calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
             day = dayOfMonth
             this.month = month

@@ -1,5 +1,6 @@
 package uz.gita.task_app.ui.main.dialogs
 
+import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
@@ -10,7 +11,11 @@ import uz.gita.task_app.databinding.DialogChooseCategoryBinding
 import uz.gita.task_app.ui.main.adapters.CategoryAdapter
 
 // Created by Jamshid Isoqov an 8/9/2022
-class ChooseCategoryDialog(ctx: Context, private val list: List<CategoryEntity>) : Dialog(ctx) {
+class ChooseCategoryDialog(
+    ctx: Context,
+    private val list: List<CategoryEntity>,
+    private val selectedCategory: Int
+) : Dialog(ctx) {
 
     private lateinit var binding: DialogChooseCategoryBinding
 
@@ -25,13 +30,15 @@ class ChooseCategoryDialog(ctx: Context, private val list: List<CategoryEntity>)
     }
 
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = DialogChooseCategoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
         window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         adapter.submitList(list)
         binding.listCategory.adapter = adapter
-
+        adapter.selectedPos = selectedCategory
+        adapter.notifyDataSetChanged()
         binding.btnChooseCategory.setOnClickListener {
             categoryListener?.invoke(list[adapter.selectedPos])
             dismiss()

@@ -11,7 +11,17 @@ fun getCurrentDate(): String {
     return SimpleDateFormat("MMMM dd,yyyy", Locale.getDefault()).format(c).uppercase()
 }
 
-fun getCurrentTime():String{
+fun String.toDate(): Date {
+    val format = SimpleDateFormat("MMMM dd,yyyy", Locale.getDefault())
+    format.parse(this)
+    return format.calendar.time
+}
+
+fun getCurrentTime(): String {
     val c = Calendar.getInstance().time
-    return SimpleDateFormat("HH:mm",Locale.getDefault()).format(c)
+    return SimpleDateFormat("HH:mm", Locale.getDefault()).format(c)
+}
+
+fun String.toTime(): List<String> {
+    return this.split(":")
 }

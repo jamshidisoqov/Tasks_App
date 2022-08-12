@@ -8,7 +8,8 @@ import android.os.Bundle
 import uz.gita.task_app.databinding.DialogAddHeaderBinding
 
 // Created by Jamshid Isoqov an 8/10/2022
-class AddHeaderDialog(ctx: Context) : Dialog(ctx) {
+class AddHeaderDialog(ctx: Context, private val title: String, private val description: String) :
+    Dialog(ctx) {
 
     private var addHeaderListener: ((String, String) -> Unit)? = null
 
@@ -16,12 +17,22 @@ class AddHeaderDialog(ctx: Context) : Dialog(ctx) {
         addHeaderListener = block
     }
 
+
     private lateinit var binding: DialogAddHeaderBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = DialogAddHeaderBinding.inflate(layoutInflater)
         setContentView(binding.root)
         window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+
+        binding.apply {
+            edTaskTitle.setText(title)
+            edTaskDescription.setText(description)
+        }
         binding.btnAddHeader.setOnClickListener {
+
+
+
             val title = binding.edTaskTitle.text.toString()
             val description = binding.edTaskDescription.text.toString()
             if (title.isNotEmpty()) {

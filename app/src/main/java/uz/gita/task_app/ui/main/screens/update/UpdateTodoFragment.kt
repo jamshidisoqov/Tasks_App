@@ -87,7 +87,11 @@ class UpdateTodoFragment : Fragment(R.layout.fragment_update_todo) {
 
     //title observers
     private val openHeaderObserver = Observer<Unit> {
-        val dialog = AddHeaderDialog(requireContext())
+        val dialog = AddHeaderDialog(
+            requireContext(),
+            viewModel.titleLiveData.value!!,
+            viewModel.descriptionLiveData.value!!
+        )
         dialog.show()
         dialog.setHeaderListener { s, s1 ->
             viewModel.setHeader(s)
@@ -100,7 +104,7 @@ class UpdateTodoFragment : Fragment(R.layout.fragment_update_todo) {
 
     //date observers
     private val openDateObserver = Observer<Unit> {
-        val dateDialog = ChooseCalendarDialog(requireContext())
+        val dateDialog = ChooseCalendarDialog(requireContext(), viewModel.dateLiveData.value!!)
         dateDialog.show()
         dateDialog.setDateListener {
             viewModel.setDate(it)
@@ -112,7 +116,7 @@ class UpdateTodoFragment : Fragment(R.layout.fragment_update_todo) {
 
     //time observers
     private val openTimeDialogObserver = Observer<Unit> {
-        val dialog = ChooseTimeDialog(requireContext())
+        val dialog = ChooseTimeDialog(requireContext(), viewModel.timeLiveData.value!!)
         dialog.show()
         dialog.setTimeListener { time ->
             viewModel.setTime(time)
@@ -124,7 +128,11 @@ class UpdateTodoFragment : Fragment(R.layout.fragment_update_todo) {
 
     //category observers
     private val openCategoryDialogObserver = Observer<Unit> {
-        val dialog = ChooseCategoryDialog(requireContext(), Constants.categoryList)
+        val dialog = ChooseCategoryDialog(
+            requireContext(),
+            Constants.categoryList,
+            viewModel.categoryLiveData.value!!.id - 1
+        )
         dialog.show()
         dialog.setCategoryClickListener {
             viewModel.setCategory(it)
@@ -142,7 +150,7 @@ class UpdateTodoFragment : Fragment(R.layout.fragment_update_todo) {
 
     //priority observer
     private val openPriorityDialogObserver = Observer<Unit> {
-        val dialog = ChoosePriorityDialog(requireContext())
+        val dialog = ChoosePriorityDialog(requireContext(), viewModel.taskPriorityLiveData.value!!)
         dialog.show()
         dialog.setPriorityListener {
             viewModel.setPriority(it + 1)

@@ -16,6 +16,7 @@ class TaskAdapter : ListAdapter<TaskEntity, TaskAdapter.ViewHolder>(TaskItemCall
 
     private var checkListener: ((TaskEntity) -> Unit)? = null
     private var itemClickListener: ((TaskEntity) -> Unit)? = null
+    private var longItemClickListener: ((TaskEntity) -> Unit)? = null
 
     fun setCheckedListener(block: (TaskEntity) -> Unit) {
         checkListener = block
@@ -25,16 +26,24 @@ class TaskAdapter : ListAdapter<TaskEntity, TaskAdapter.ViewHolder>(TaskItemCall
         itemClickListener = block
     }
 
+    fun setItemLongClickListener(block: (TaskEntity) -> Unit) {
+        longItemClickListener = block
+    }
+
     inner class ViewHolder(private val binding: ListItemTodoBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         init {
             binding.apply {
-                rbTodo.setOnCheckedChangeListener { _, _ ->
+                rbTodo.setOnClickListener {
                     checkListener?.invoke(getItem(adapterPosition))
                 }
                 root.setOnClickListener {
                     itemClickListener?.invoke(getItem(adapterPosition))
+                }
+                root.setOnLongClickListener {
+                    longItemClickListener?.invoke(getItem(adapterPosition))
+                    true
                 }
             }
 

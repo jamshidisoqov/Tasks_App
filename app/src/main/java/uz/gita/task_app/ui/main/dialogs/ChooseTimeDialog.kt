@@ -8,9 +8,10 @@ import android.os.Build
 import android.os.Bundle
 import androidx.annotation.RequiresApi
 import uz.gita.task_app.databinding.DialogChooseTimeBinding
+import uz.gita.task_app.utils.extensions.toTime
 
 // Created by Jamshid Isoqov an 8/9/2022
-class ChooseTimeDialog(ctx: Context) : Dialog(ctx) {
+class ChooseTimeDialog(ctx: Context, private val time: String) : Dialog(ctx) {
 
     private lateinit var binding: DialogChooseTimeBinding
 
@@ -27,6 +28,8 @@ class ChooseTimeDialog(ctx: Context) : Dialog(ctx) {
             btnCancel.setOnClickListener {
                 dismiss()
             }
+            spinnerTime.hour = time.toTime()[0].toInt()
+            spinnerTime.minute = time.toTime()[1].toInt()
             btnSave.setOnClickListener {
                 val hour = binding.spinnerTime.hour
                 val minute = binding.spinnerTime.minute

@@ -3,6 +3,7 @@ package uz.gita.task_app.ui.main.screens.home
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -63,6 +64,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         adapter.setItemClickListener {
             viewModel.openUpdate(it)
         }
+        adapter.setItemLongClickListener {
+            Toast.makeText(requireContext(), it.description, Toast.LENGTH_SHORT).show()
+        }
     }
 
     private val addTaskObserver = Observer<Unit> {
@@ -77,7 +81,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     }
     private val openDateObserver = Observer<Unit> {
-        val dialog = ChooseCalendarDialog(requireContext())
+        val dialog = ChooseCalendarDialog(requireContext(), viewModel.date.value!!)
         dialog.show()
         dialog.setDateListener {
             viewModel.setData(it)
