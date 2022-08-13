@@ -8,6 +8,8 @@ interface HomeViewModel {
 
     val allTasks: LiveData<List<TaskEntity>>
 
+    val imageLiveData:LiveData<String>
+
     val openProfileLiveData: LiveData<Unit>
 
     val openUpdateTaskLiveData:LiveData<TaskEntity>
@@ -29,6 +31,8 @@ interface HomeViewModel {
     fun getTasks(date: String, pos: Int)
 
     fun openProfile()
+
+    fun getImage()
 
     fun updateTask(taskData: TaskEntity)
 

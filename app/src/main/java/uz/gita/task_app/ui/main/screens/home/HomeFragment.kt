@@ -1,5 +1,6 @@
 package uz.gita.task_app.ui.main.screens.home
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
@@ -18,6 +19,7 @@ import uz.gita.task_app.ui.main.dialogs.BottomMenuDialog
 import uz.gita.task_app.ui.main.dialogs.ChooseCalendarDialog
 import uz.gita.task_app.ui.main.dialogs.TaskEditStatusDialog
 import uz.gita.task_app.utils.extensions.getCurrentDate
+import uz.gita.task_app.utils.extensions.setLocalImage
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
 
@@ -60,11 +62,13 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             spinnerStatus.onItemSelectedListener = itemSelectedListener
         }
 
+        viewModel.getImage()
         viewModel.getTasks(viewModel.date.value!!, 0)
 
 
         viewModel.allTasks.observe(viewLifecycleOwner, tasksObserver)
         viewModel.date.observe(viewLifecycleOwner, dateObserver)
+        viewModel.imageLiveData.observe(viewLifecycleOwner, profileImageObserver)
 
         adapter.setCheckedListener {
             viewModel.editClicked(it)
@@ -105,7 +109,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
     private val dateObserver = Observer<String> {
         binding.tvDate.text = it
-
     }
 
     private var itemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -118,6 +121,14 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         }
 
+    }
+
+    private val profileImageObserver = Observer<String> {
+        if (it == "image") {
+            binding.imgUser.setImageResource(R.drawable.user)
+        } else {
+            binding.imgUser.setLocalImage(Uri.parse(it), true)
+        }
     }
     private var editDialogListener = Observer<TaskEntity> {
         val dialog = TaskEditStatusDialog(requireContext(), it.isWorking == 1)

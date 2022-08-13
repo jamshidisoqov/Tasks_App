@@ -24,11 +24,19 @@ class MySharedPreferencesImpl private constructor(ctx: Context) : MySharedPrefer
         editor.apply()
     }
 
+    override fun getImageUri(): String = sharedPreferences.getString(IMAGE, "image").toString()
+
+    override fun setImageUri(uri: String) {
+        editor.putString(IMAGE, uri)
+        editor.apply()
+    }
+
     companion object {
 
         const val SHARED_NAME = "app_data"
         const val REGISTER = "is_register"
         const val NAME = "name"
+        const val IMAGE = "image"
 
         private lateinit var instance: MySharedPreferences
 

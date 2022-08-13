@@ -14,7 +14,7 @@
         android:id="@+id/img_category"
         android:layout_width="64dp"
         android:layout_height="64dp"
-        android:layout_margin="8dp"
+        android:layout_margin="4dp"
         android:padding="16sp"
         android:src="@drawable/ic_bread"
         app:tint="@color/white" />

@@ -19,7 +19,7 @@
     <string name="do_math_homework">Do math homework</string>
     <string name="description">Description</string>
     <string name="choose_category">Choose category</string>
-    <string name="add_task_priority">Add Task Priority</string>
+    <string name="add_task_priority">Task Priority</string>
     <string name="cancel">Cancel</string>
     <string name="save">Save</string>
     <string name="edit_task">Edit task</string>

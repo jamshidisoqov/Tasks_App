@@ -7,6 +7,8 @@ interface ProfileViewModel {
 
     val nameLiveData: LiveData<String>
 
+    val imageLiveData:LiveData<String>
+
     val backLiveData: LiveData<Unit>
 
     val changeNameLiveData: LiveData<Unit>
@@ -34,5 +36,7 @@ interface ProfileViewModel {
     fun setImage()
 
     fun backClick()
+
+    fun setImage(str:String)
 
 }

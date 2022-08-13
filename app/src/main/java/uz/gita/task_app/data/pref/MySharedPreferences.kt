@@ -11,4 +11,8 @@ interface MySharedPreferences {
 
     fun setName(name: String)
 
+    fun getImageUri():String
+
+    fun setImageUri(uri:String)
+
 }

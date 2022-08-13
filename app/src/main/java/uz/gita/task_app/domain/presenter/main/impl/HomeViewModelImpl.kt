@@ -4,6 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import uz.gita.task_app.data.pref.MySharedPreferences
+import uz.gita.task_app.data.pref.impl.MySharedPreferencesImpl
 import uz.gita.task_app.data.room.entity.TaskEntity
 import uz.gita.task_app.domain.presenter.main.HomeViewModel
 import uz.gita.task_app.domain.repository.main.impl.HomeRepositoryImpl
@@ -12,9 +14,12 @@ import uz.gita.task_app.utils.extensions.getCurrentDate
 class HomeViewModelImpl : ViewModel(), HomeViewModel {
 
     private val repository = HomeRepositoryImpl.getInstance()
+    private val sharedPreferences = MySharedPreferencesImpl.getInstance()
 
     private var _allTasks: MutableLiveData<List<TaskEntity>> = MutableLiveData()
     override val allTasks: LiveData<List<TaskEntity>> = _allTasks
+
+    override val imageLiveData:MutableLiveData<String> = MutableLiveData()
 
     private var _openProfileLiveData: MutableLiveData<Unit> = MutableLiveData()
     override val openProfileLiveData: LiveData<Unit> = _openProfileLiveData
@@ -58,6 +63,10 @@ class HomeViewModelImpl : ViewModel(), HomeViewModel {
 
     override fun openProfile() {
         _openProfileLiveData.postValue(Unit)
+    }
+
+    override fun getImage() {
+        imageLiveData.postValue(sharedPreferences.getImageUri())
     }
 
     override fun updateTask(taskData: TaskEntity) {

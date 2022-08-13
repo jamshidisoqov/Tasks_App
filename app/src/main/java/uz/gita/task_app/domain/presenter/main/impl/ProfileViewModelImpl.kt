@@ -1,5 +1,6 @@
 package uz.gita.task_app.domain.presenter.main.impl
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import uz.gita.task_app.data.pref.impl.MySharedPreferencesImpl
@@ -11,6 +12,8 @@ class ProfileViewModelImpl : ViewModel(), ProfileViewModel {
 
     override val nameLiveData: MutableLiveData<String> =
         MutableLiveData(sharedPreferences.getName())
+
+    override val imageLiveData: MutableLiveData<String> = MutableLiveData(sharedPreferences.getImageUri())
 
     override val backLiveData: MutableLiveData<Unit> = MutableLiveData()
 
@@ -51,6 +54,11 @@ class ProfileViewModelImpl : ViewModel(), ProfileViewModel {
 
     override fun setImage() {
 
+    }
+
+    override fun setImage(str: String) {
+        sharedPreferences.setImageUri(str)
+        imageLiveData.postValue(str)
     }
 
     override fun backClick() {
