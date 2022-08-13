@@ -19,6 +19,7 @@ class AddHeaderDialog(ctx: Context, private val title: String, private val descr
 
 
     private lateinit var binding: DialogAddHeaderBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = DialogAddHeaderBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -26,12 +27,11 @@ class AddHeaderDialog(ctx: Context, private val title: String, private val descr
 
 
         binding.apply {
+
             edTaskTitle.setText(title)
             edTaskDescription.setText(description)
         }
         binding.btnAddHeader.setOnClickListener {
-
-
 
             val title = binding.edTaskTitle.text.toString()
             val description = binding.edTaskDescription.text.toString()

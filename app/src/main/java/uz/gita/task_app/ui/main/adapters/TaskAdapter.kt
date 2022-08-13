@@ -1,5 +1,6 @@
 package uz.gita.task_app.ui.main.adapters
 
+import android.annotation.SuppressLint
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -50,11 +51,12 @@ class TaskAdapter : ListAdapter<TaskEntity, TaskAdapter.ViewHolder>(TaskItemCall
 
         }
 
+        @SuppressLint("SetTextI18n")
         fun onBind() {
             val data = getItem(adapterPosition)
             binding.apply {
                 tvNameTodo.text = data.title
-                tvTimeTodo.text = data.time
+                tvTimeTodo.text = "$TIME ${data.time}"
                 val category = Constants.categoryList[data.categoryId - 1]
                 tvCategoryTask.text = category.categoryName
                 tvPriorityTask.text = data.priority.toString()
@@ -76,4 +78,8 @@ class TaskAdapter : ListAdapter<TaskEntity, TaskAdapter.ViewHolder>(TaskItemCall
     )
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.onBind()
+
+    companion object{
+        const val TIME = "Time:"
+    }
 }

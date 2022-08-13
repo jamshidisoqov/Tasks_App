@@ -42,6 +42,7 @@
     <string name="developer">Developer from Isoqov Jamshid</string>
     <string name="contact_us"><![CDATA[Contact & Feedback]]></string>
     <string name="share">Share App</string>
+    <string name="general">General</string>
 
     <string-array name="intro_titles">
         <item>Manage your tasks</item>
